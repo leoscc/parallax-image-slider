@@ -27,4 +27,16 @@ window.onmousemove = (event) => {
     },
     { duration: 3600, fill: "forwards" }
   );
+
+  for (const image of track.getElementsByClassName("image")) {
+    image.animate(
+      {
+        objectPosition: `${100 + nextPercentage}% center`,
+      },
+      {
+        duration: 3600,
+        fill: "forwards",
+      }
+    );
+  }
 };
