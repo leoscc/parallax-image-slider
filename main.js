@@ -1,3 +1,4 @@
+// Credits: https://codepen.io/Hyperplexed/pen/MWXBRBp
 const track = document.getElementById("image-track");
 
 window.onmousedown = (event) => {
@@ -17,7 +18,12 @@ window.onmousemove = (event) => {
     maxDelta = window.innerWidth / 2;
 
   const percentage = (mouseDelta / maxDelta) * -100;
-  const nextPercentage = parseFloat(track.dataset.prevPercentage) + percentage;
+  const nextPercentageUnconstrained =
+    parseFloat(track.dataset.prevPercentage) + percentage;
+  const nextPercentage = Math.max(
+    Math.min(nextPercentageUnconstrained, 0),
+    -100
+  );
 
   track.dataset.percentage = nextPercentage;
 
